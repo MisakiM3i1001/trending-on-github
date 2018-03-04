@@ -5,29 +5,76 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+
+    compileSdkVersion 27
+
     defaultConfig {
-        applicationId "io.github.theuzfaleiro.trendingongithub"
+        applicationId 'io.github.theuzfaleiro.trendingongithub'
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName '1.0'
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
+
     buildTypes {
-        release {
+
+        debug {
+            shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
         }
     }
+
+    apply plugin: 'kotlin-kapt'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "com.android.support:appcompat-v7:$supportDesignVersion"
+    implementation "com.android.support:design:$supportDesignVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.12.0'
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.8.0'
+    androidTestImplementation 'com.github.andrzejchm.RESTMock:android:0.3.1'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+repositories {
+    mavenCentral()
 }
