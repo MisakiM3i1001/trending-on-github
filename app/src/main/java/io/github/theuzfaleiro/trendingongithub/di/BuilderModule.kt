@@ -5,7 +5,7 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
 import io.github.theuzfaleiro.trendingongithub.di.module.RepositoryModule
 import io.github.theuzfaleiro.trendingongithub.di.scope.PerActivity
-import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.MainActivity
+import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.RepositoryActivity
 
 
 @Module(includes = [AndroidInjectionModule::class])
@@ -13,5 +13,5 @@ abstract class BuilderModule {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [(RepositoryModule::class)])
-    internal abstract fun homeActivityInjector(): MainActivity
+    abstract fun homeActivityInjector(): RepositoryActivity
 }
