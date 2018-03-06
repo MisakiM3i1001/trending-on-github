@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Application
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import io.github.theuzfaleiro.trendingongithub.di.DaggerAppComponent
+import io.github.theuzfaleiro.trendingongithub.di.component.DaggerAppComponent
 import javax.inject.Inject
 
 
@@ -21,7 +21,10 @@ open class TrendingOnGitHubApplication : Application(), HasActivityInjector {
     }
 
     private fun setupDagger() {
-        DaggerAppComponent.builder().create(this).inject(this);
+        DaggerAppComponent.builder()
+                .application(this)
+                .build()
+                .inject(this)
     }
 
     override fun activityInjector() = activityDispatchingInjector

@@ -1,4 +1,4 @@
-package io.github.theuzfaleiro.trendingongithub.di
+package io.github.theuzfaleiro.trendingongithub.di.module
 
 import android.app.Application
 import dagger.Binds

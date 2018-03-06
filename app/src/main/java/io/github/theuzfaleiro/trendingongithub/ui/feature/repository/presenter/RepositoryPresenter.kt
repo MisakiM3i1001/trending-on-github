@@ -1,4 +1,4 @@
-package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
+package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
 import io.github.theuzfaleiro.trendingongithub.data.network.repository.repository.RepositoryRepository
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
