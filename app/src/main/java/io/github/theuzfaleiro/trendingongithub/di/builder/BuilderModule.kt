@@ -1,7 +1,6 @@
 package io.github.theuzfaleiro.trendingongithub.di.builder
 
 import dagger.Module
-import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.di.RepositoryModule
 import io.github.theuzfaleiro.trendingongithub.di.scope.PerActivity

@@ -1,15 +1,20 @@
 package io.github.theuzfaleiro.trendingongithub.data.network
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import io.github.theuzfaleiro.trendingongithub.BuildConfig
 import io.github.theuzfaleiro.trendingongithub.TrendingOnGitHubApplication
+import io.github.theuzfaleiro.trendingongithub.utils.AppScheduler
+import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -23,7 +28,7 @@ class RetrofitConfigModule {
 
     @Provides
     @Singleton
-    fun providesRetroFit(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory,
+    fun providesRetrofit(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory,
                          trendingOnGitHubApplication: TrendingOnGitHubApplication,
                          rxJava2CallAdapterFactory: RxJava2CallAdapterFactory): Retrofit = Retrofit.Builder()
             .client(okHttpClient)
@@ -35,30 +40,38 @@ class RetrofitConfigModule {
 
     @Provides
     @Reusable
-    fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
+    fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor, okHttpCache: Cache): OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .cache(okHttpCache)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
     @Provides
-    @Reusable
+    fun providesOkHttpCache(trendingOnGitHubApplication: Application): Cache =
+            Cache(trendingOnGitHubApplication.cacheDir, 10 * 1024 * 1024)
+
+    @Provides
     fun providesMoshiConverterFactory(): MoshiConverterFactory = MoshiConverterFactory.create()
 
     @Provides
-    @Reusable
     fun providesRxJavaCallAdapterFactory(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
 
     @Provides
-    @Reusable
     fun providesBuildType(): String = BuildConfig.BUILD_TYPE
 
     @Provides
-    @Reusable
     fun providesHttpLoggingInterceptor(buildType: String): HttpLoggingInterceptor {
         return if (buildType.contentEquals("DEBUG")) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
+    }
+
+    @Provides
+    fun providesRxSchedulers(): RxSchedulers {
+        return AppScheduler()
     }
 
 }

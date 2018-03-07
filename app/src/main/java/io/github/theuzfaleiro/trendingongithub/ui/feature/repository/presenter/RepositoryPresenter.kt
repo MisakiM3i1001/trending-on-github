@@ -2,25 +2,22 @@ package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
 import io.github.theuzfaleiro.trendingongithub.data.network.repository.repository.RepositoryRepository
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
+import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
 import io.reactivex.SingleObserver
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 
-open class RepositoryPresenter(private var repositoryView: RepositoryContract.RepositoryView, private var repository: RepositoryRepository) : RepositoryContract.RepositoryPresenter {
+open class RepositoryPresenter(private val repositoryView: RepositoryContract.View, private val repository: RepositoryRepository, private val rxSchedulers: RxSchedulers) : RepositoryContract.Presenter {
 
     override fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int) {
         repository.getRepositories(repositoryLanguage, sortOrder, page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate { repositoryView.dismisLoading() }
+                .subscribeOn(rxSchedulers.io())
+                .observeOn(rxSchedulers.ui())
                 .subscribeWith(object : SingleObserver<RepositoryList> {
-                    override fun onSuccess(t: RepositoryList) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onSubscribe(d: Disposable) {
-                        repositoryView.showLoading()
+                    override fun onSuccess(t: RepositoryList) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
                     override fun onError(e: Throwable) {

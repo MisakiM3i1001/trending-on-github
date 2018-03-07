@@ -3,11 +3,9 @@ package io.github.theuzfaleiro.trendingongithub.di.module
 import android.app.Application
 import dagger.Binds
 import dagger.Module
-import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
-
-@Module(includes = [AndroidInjectionModule::class])
+@Module
 abstract class AppModule {
 
     @Binds
