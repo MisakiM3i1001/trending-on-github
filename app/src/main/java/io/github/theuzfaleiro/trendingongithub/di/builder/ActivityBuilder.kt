@@ -7,7 +7,7 @@ import io.github.theuzfaleiro.trendingongithub.di.scope.PerActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.RepositoryActivity
 
 @Module
-abstract class BuilderModule {
+abstract class ActivityBuilder {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [(RepositoryModule::class)])
