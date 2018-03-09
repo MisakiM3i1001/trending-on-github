@@ -24,7 +24,6 @@ class RetrofitConfigModule {
     fun providesGitHubEndPoint(retrofit: Retrofit): GitHubEndPoint =
             retrofit.create(GitHubEndPoint::class.java)
 
-
     @Provides
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory,

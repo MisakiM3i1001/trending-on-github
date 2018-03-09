@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable
 class RepositoryPresenter(private val repositoryView: RepositoryContract.View, private val repository: RepositoryRepository, private val rxSchedulers: RxSchedulers) : RepositoryContract.Presenter {
 
     override fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int) {
+
         repository.getRepositories(repositoryLanguage, sortOrder, page)
                 .subscribeOn(rxSchedulers.io())
                 .observeOn(rxSchedulers.ui())
@@ -16,8 +17,8 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
                     override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onSuccess(t: RepositoryList) {
-                        repositoryView.displayRepositories(repositoryResponseList = t.repositoryList)
+                    override fun onSuccess(repositoryList: RepositoryList) {
+                        repositoryView.displayRepositories(repositoryList)
                     }
 
                     override fun onError(e: Throwable) {

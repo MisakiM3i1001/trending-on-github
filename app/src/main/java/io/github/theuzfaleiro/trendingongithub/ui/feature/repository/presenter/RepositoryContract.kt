@@ -1,11 +1,11 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
-import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
+import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
 
 interface RepositoryContract {
 
     interface View {
-        fun displayRepositories(repositoryResponseList: List<Repository>)
+        fun displayRepositories(repositoryResponseList: RepositoryList)
     }
 
     interface Presenter {
