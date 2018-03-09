@@ -21,7 +21,7 @@ open class TrendingOnGitHubApplication : Application(), HasActivityInjector {
 
     override fun activityInjector() = activityInjector
 
-    fun getBaseUrl(): String {
+    open fun getBaseUrl(): String {
         return BuildConfig.BASE_URL
     }
 }
