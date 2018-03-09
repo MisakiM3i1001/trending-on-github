@@ -6,8 +6,8 @@ import dagger.Provides
 import io.github.theuzfaleiro.trendingongithub.data.network.GitHubEndPoint
 import io.github.theuzfaleiro.trendingongithub.data.network.repository.repository.RepositoryRepository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.RepositoryActivity
-import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryPresenter
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
+import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryPresenter
 import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
 
 
@@ -15,21 +15,21 @@ import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun repositoryView(weatherRepositoryActivity: RepositoryActivity): RepositoryContract.View
+    abstract fun bindsRepositoryView(weatherActivity: RepositoryActivity): RepositoryContract.View
 
     @Module
     companion object {
 
-        @Provides
         @JvmStatic
+        @Provides
         fun providesRepositoryRepository(openWeatherEndPoint: GitHubEndPoint): RepositoryRepository {
             return RepositoryRepository(openWeatherEndPoint)
         }
 
-        @Provides
         @JvmStatic
-        fun providesRepositoryPresenter(view: RepositoryContract.View, repositoryRepository: RepositoryRepository, rxSchedulers: RxSchedulers): RepositoryContract.Presenter {
-            return RepositoryPresenter(view, repositoryRepository, rxSchedulers)
+        @Provides
+        fun providesRepositoryPresenter(view: RepositoryContract.View, weatherRepository: RepositoryRepository, rxSchedulers: RxSchedulers): RepositoryContract.Presenter {
+            return RepositoryPresenter(view, weatherRepository, rxSchedulers)
         }
     }
 }

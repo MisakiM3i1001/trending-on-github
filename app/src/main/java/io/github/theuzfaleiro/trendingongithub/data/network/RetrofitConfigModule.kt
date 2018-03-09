@@ -1,6 +1,5 @@
 package io.github.theuzfaleiro.trendingongithub.data.network
 
-import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -48,7 +47,7 @@ class RetrofitConfigModule {
             .build()
 
     @Provides
-    fun providesOkHttpCache(trendingOnGitHubApplication: Application): Cache =
+    fun providesOkHttpCache(trendingOnGitHubApplication: TrendingOnGitHubApplication): Cache =
             Cache(trendingOnGitHubApplication.cacheDir, 10 * 1024 * 1024)
 
     @Provides
@@ -58,20 +57,17 @@ class RetrofitConfigModule {
     fun providesRxJavaCallAdapterFactory(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
 
     @Provides
+    fun providesRxSchedulers(): RxSchedulers = AppScheduler()
+
+    @Provides
     fun providesBuildType(): String = BuildConfig.BUILD_TYPE
 
     @Provides
     fun providesHttpLoggingInterceptor(buildType: String): HttpLoggingInterceptor {
-        return if (buildType.contentEquals("DEBUG")) {
+        return if (buildType.contentEquals("debug")) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
     }
-
-    @Provides
-    fun providesRxSchedulers(): RxSchedulers {
-        return AppScheduler()
-    }
-
 }

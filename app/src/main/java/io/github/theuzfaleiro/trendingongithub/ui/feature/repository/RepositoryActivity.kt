@@ -2,8 +2,9 @@ package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import dagger.android.AndroidInjection
-import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
+import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
 import javax.inject.Inject
 
@@ -18,9 +19,11 @@ class RepositoryActivity : AppCompatActivity(), RepositoryContract.View {
 
         super.onCreate(savedInstanceState)
 
+        repositoryPresent.getRepositoriesFromApi("java","stars",1)
+
     }
 
     override fun displayRepositories(repositoryResponseList: List<Repository>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this,repositoryResponseList.first().name, Toast.LENGTH_LONG).show()
     }
 }

@@ -6,7 +6,7 @@ import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 
-open class RepositoryPresenter(private val repositoryView: RepositoryContract.View, private val repository: RepositoryRepository, private val rxSchedulers: RxSchedulers) : RepositoryContract.Presenter {
+class RepositoryPresenter(private val repositoryView: RepositoryContract.View, private val repository: RepositoryRepository, private val rxSchedulers: RxSchedulers) : RepositoryContract.Presenter {
 
     override fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int) {
         repository.getRepositories(repositoryLanguage, sortOrder, page)
@@ -17,11 +17,10 @@ open class RepositoryPresenter(private val repositoryView: RepositoryContract.Vi
                     }
 
                     override fun onSuccess(t: RepositoryList) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        repositoryView.displayRepositories(repositoryResponseList = t.repositoryList)
                     }
 
                     override fun onError(e: Throwable) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
                 })
     }

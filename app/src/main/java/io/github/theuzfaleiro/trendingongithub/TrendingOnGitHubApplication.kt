@@ -5,29 +5,23 @@ import android.app.Application
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import io.github.theuzfaleiro.trendingongithub.di.component.DaggerAppComponent
-import io.github.theuzfaleiro.trendingongithub.di.module.AppModule
 import javax.inject.Inject
 
 
 open class TrendingOnGitHubApplication : Application(), HasActivityInjector {
 
     @Inject
-    lateinit var activityDispatchingInjector: DispatchingAndroidInjector<Activity>
-
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
 
-        setupDagger()
+        DaggerAppComponent.builder().create(this).inject(this)
     }
 
-    private fun setupDagger() {
-        DaggerAppComponent.builder().applicationModule(AppModule(this)).build()
+    override fun activityInjector() = activityInjector
+
+    fun getBaseUrl(): String {
+        return BuildConfig.BASE_URL
     }
-
-    override fun activityInjector() = activityDispatchingInjector
-
-
-    open fun getBaseUrl() = BuildConfig.BASE_URL
-
 }

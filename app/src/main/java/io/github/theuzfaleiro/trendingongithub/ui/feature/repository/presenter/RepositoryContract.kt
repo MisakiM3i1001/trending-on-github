@@ -1,6 +1,6 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
-import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
+import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 
 interface RepositoryContract {
 
