@@ -22,7 +22,7 @@ class RepositoryAdapter(private val repositories: List<Repository>, private val 
 
 }
 
-class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val respositoryLogo = itemView.imageViewRepositoryLogo
     private val repositoryName = itemView.textViewRepositoryName
