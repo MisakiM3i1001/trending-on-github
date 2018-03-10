@@ -1,11 +1,16 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
+import android.support.v7.widget.LinearLayoutManager
 import dagger.android.AndroidInjection
+import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
+import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
+import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryAdapter
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
+import kotlinx.android.synthetic.main.activity_repository.*
 import javax.inject.Inject
 
 class RepositoryActivity : AppCompatActivity(), RepositoryContract.View {
@@ -19,11 +24,25 @@ class RepositoryActivity : AppCompatActivity(), RepositoryContract.View {
 
         super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.activity_repository)
+
+        initRepositoryRecyclerView()
+
         repositoryPresent.getRepositoriesFromApi("android", "stars", 1)
 
     }
 
+    private fun initRepositoryRecyclerView() {
+        with(recyclerViewRepositories) {
+            layoutManager = LinearLayoutManager(this@RepositoryActivity,
+                    LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(true)
+        }
+    }
+
     override fun displayRepositories(repositoryResponseList: RepositoryList) {
-        Toast.makeText(this, repositoryResponseList.repositoryList.first().name, Toast.LENGTH_LONG).show()
+        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList.repositoryList, { repositoryClick ->
+            startActivity(Intent(this, PullRequestActivity::class.java))
+        })
     }
 }

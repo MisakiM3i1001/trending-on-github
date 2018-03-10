@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageViewRepositoryLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/marginTop8dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRepositoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart16dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewRepositoryLogo"
+        app:layout_constraintTop_toTopOf="@+id/imageViewRepositoryLogo"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/textViewRepositoryDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewRepositoryName"
+        app:layout_constraintStart_toStartOf="@+id/textViewRepositoryName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryName"
+        tools:text="@tools:sample/lorem" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/repositoryBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="repository_text_view_repository_name,repository_text_view_repository_description" />
+
+    <ImageView
+        android:id="@+id/imageViewStarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_repository_fork"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewRepositoryDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryDescription" />
+
+    <TextView
+        android:id="@+id/textViewStarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewStarCount"
+        app:layout_constraintStart_toEndOf="@+id/imageViewStarCount"
+        app:layout_constraintTop_toTopOf="@+id/imageViewStarCount"
+        tools:text="@tools:sample/us_phones" />
+
+    <ImageView
+        android:id="@+id/imageViewForkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart8dp"
+        android:src="@drawable/ic_repository_star"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStarCount"
+        app:layout_constraintStart_toEndOf="@+id/textViewStarCount"
+        app:layout_constraintTop_toTopOf="@+id/imageViewStarCount" />
+
+    <TextView
+        android:id="@+id/textViewForkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewForkCount"
+        app:layout_constraintStart_toEndOf="@+id/imageViewForkCount"
+        app:layout_constraintTop_toTopOf="@+id/imageViewStarCount"
+        tools:text="@tools:sample/us_phones" />
+
+</android.support.constraint.ConstraintLayout>

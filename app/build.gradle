@@ -69,8 +69,13 @@ dependencies {
     androidTestImplementation 'com.github.andrzejchm.RESTMock:android:0.3.1'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+
 }
+
 
 repositories {
     mavenCentral()
