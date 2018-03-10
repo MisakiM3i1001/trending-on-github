@@ -37,7 +37,6 @@ class RetrofitConfigModule {
 
 
     @Provides
-    @Reusable
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor, okHttpCache: Cache): OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .cache(okHttpCache)
