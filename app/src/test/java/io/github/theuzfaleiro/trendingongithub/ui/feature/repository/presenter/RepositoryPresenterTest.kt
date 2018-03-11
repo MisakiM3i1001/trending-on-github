@@ -42,7 +42,7 @@ class RepositoryPresenterTest {
 
         testScheduler.triggerActions()
 
-        verify(repositoryView, times(1)).changeViewFlipperPosition(1)
+        verify(repositoryView, times(1)).changeViewFlipperPosition(2)
 
         verify(repositoryView, times(1)).displayRepositories(getMockedRepositoriesMock())
 
@@ -54,7 +54,9 @@ class RepositoryPresenterTest {
             Single.just(RepositoryList(listOf(Repository("trending-on-github", "Most Awesome Repository In GitHub",
                     Owner("theuzfaleiro", "theuzfaleiro.svg"), 789, 4123))))
 
+    private fun getMockedError(): Single<RepositoryList> = Single.error(Throwable())
 
+    //TODO Search Why Do I Need This!
     private fun getMockedRepositoriesMock(): RepositoryList = RepositoryList(listOf(Repository("trending-on-github", "Most Awesome Repository In GitHub",
             Owner("theuzfaleiro", "theuzfaleiro.svg"), 789, 4123)))
 

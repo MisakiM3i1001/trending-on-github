@@ -15,7 +15,7 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
                 .observeOn(rxSchedulers.ui())
                 .subscribeWith(object : SingleObserver<RepositoryList> {
                     override fun onSubscribe(d: Disposable) {
-                        repositoryView.changeViewFlipperPosition(1)
+                        repositoryView.changeViewFlipperPosition(2)
                     }
 
                     override fun onSuccess(repositoryList: RepositoryList) {
@@ -24,7 +24,7 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
                     }
 
                     override fun onError(e: Throwable) {
-                        repositoryView.changeViewFlipperPosition(2)
+                        repositoryView.changeViewFlipperPosition(1)
                     }
                 })
     }

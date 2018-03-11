@@ -5,8 +5,9 @@
     android:id="@+id/viewFlipperRepository"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/marginEnd16dp"
+    android:layout_marginStart="@dimen/marginStart16dp"
     tools:context="io.github.theuzfaleiro.trendingongithub.ui.feature.repository.RepositoryActivity">
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewRepositories"
