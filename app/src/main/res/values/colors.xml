@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#E53935</color>
+    <color name="colorPrimaryDark">#B71C1C</color>
+    <color name="colorAccent">#E53935</color>
+
+    <!--Text-->
+    <color name="textViewOpaqueBlack">#212121</color>
+    <color name="textViewOpaqueRed">#FF6F60</color>
+    <color name="textViewOpaqueDarkRed">@color/colorPrimaryDark</color>
+    <color name="textViewBlazeRed">@color/colorPrimary</color>
+    <color name="textViewIceWhite">#F5F5F5</color>
+
+    <!--Background-->
+    <color name="layoutIceWhite">#F5F5F5</color>
+
+    <!--Icons-->
+    <color name="iconBlazeRed">@color/colorPrimary</color>
+
+    <!--Divider-->
+    <color name="dividerPlatinum">#E0E0E0</color>
 </resources>

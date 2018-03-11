@@ -28,7 +28,7 @@ class RepositoryActivity : AppCompatActivity(), RepositoryContract.View {
 
         initRepositoryRecyclerView()
 
-        repositoryPresent.getRepositoriesFromApi("android", "stars", 1)
+        repositoryPresent.getRepositoriesFromApi("android", "stars")
 
     }
 
@@ -44,5 +44,9 @@ class RepositoryActivity : AppCompatActivity(), RepositoryContract.View {
         recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList.repositoryList, { repositoryClick ->
             startActivity(Intent(this, PullRequestActivity::class.java))
         })
+    }
+
+    override fun changeViewFlipperPosition(viewFlipperPosition: Int) {
+        viewFlipperRepository.displayedChild = viewFlipperPosition
     }
 }

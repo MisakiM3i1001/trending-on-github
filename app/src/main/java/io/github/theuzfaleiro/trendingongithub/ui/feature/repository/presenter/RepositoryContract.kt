@@ -6,9 +6,11 @@ interface RepositoryContract {
 
     interface View {
         fun displayRepositories(repositoryResponseList: RepositoryList)
+
+        fun changeViewFlipperPosition(viewFlipperPosition: Int)
     }
 
     interface Presenter {
-        fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int)
+        fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int = 1)
     }
 }

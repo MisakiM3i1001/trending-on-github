@@ -1,8 +1,6 @@
 package io.github.theuzfaleiro.trendingongithub.data.network.response.repository
 
 import com.squareup.moshi.Json
-import io.github.theuzfaleiro.trendingongithub.data.model.repository.Owner
-
 
 data class Repository(@Json(name = "name") val name: String,
                       @Json(name = "description") val description: String,
