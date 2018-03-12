@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:barrierDirection="start"
-        app:constraint_referenced_ids="repository_text_view_repository_name,repository_text_view_repository_description" />
+        app:constraint_referenced_ids="textViewRepositoryName,textViewRepositoryDescription" />
 
     <ImageView
         android:id="@+id/imageViewStarCount"

@@ -15,7 +15,7 @@ import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindsRepositoryView(weatherActivity: RepositoryActivity): RepositoryContract.View
+    abstract fun bindsRepositoryView(repositoryActivity: RepositoryActivity): RepositoryContract.View
 
     @Module
     companion object {
