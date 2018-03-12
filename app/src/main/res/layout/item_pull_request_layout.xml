@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageViewPullRequestLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop8dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPullRequestTitle"
+        style="@style/BaseTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart16dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPullRequestLogo"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPullRequestLogo"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/textViewPullRequestBody"
+        style="@style/BaseTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewPullRequestTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestTitle"
+        tools:text="@tools:sample/lorem" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/repositoryBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="textViewPullRequestTitle,textViewPullRequestBody" />
+
+</android.support.constraint.ConstraintLayout>
