@@ -64,11 +64,13 @@ class RepositoryActivityTest {
     }
 
     @Test
-    fun shouldShownProductInstallments_WhenSeeMoreInstallmentsWasClicked() {
+    fun shouldOpenPullRequestActivity_WhenARepositoryWasSelected() {
 
         RESTMockServer.whenGET(pathContains("search/repositories")).thenReturnFile(200, "repository/repository.json")
 
         repositoryActivityTestRule.launchActivity(Intent())
+
+        Thread.sleep(3000)
 
         val activityResult = Instrumentation.ActivityResult(Activity.RESULT_OK, Intent())
 
