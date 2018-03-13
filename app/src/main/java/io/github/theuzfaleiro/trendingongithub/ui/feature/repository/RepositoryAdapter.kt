@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
 import kotlinx.android.synthetic.main.item_repository_layout.view.*
@@ -24,7 +25,7 @@ class RepositoryAdapter(private val repositoryList: List<Repository>, private va
 
 open class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val respositoryLogo = itemView.imageViewRepositoryLogo
+    private val repositoryLogo = itemView.imageViewRepositoryLogo
     private val repositoryName = itemView.textViewRepositoryName
     private val repositoryDescription = itemView.textViewRepositoryDescription
     private val repositoryStarCount = itemView.textViewStarCount
@@ -33,6 +34,11 @@ open class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
     fun bindItemsToView(repository: Repository, clickListener: (repository: Repository) -> Unit) {
 
         itemView.apply {
+
+            Glide.with(repositoryLogo.context)
+                    .load(repository.owner.avatarUrl)
+                    .into(repositoryLogo)
+
             repositoryName.text = repository.name
             repositoryDescription.text = repository.description
             repositoryStarCount.text = repository.starCount.toString()
