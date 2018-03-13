@@ -23,7 +23,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
         initRepositoryRecyclerView()
 
-        repositoryPresent.getRepositoriesFromApi("android", "stars")
+        repositoryPresent.getRepositoriesFromApi("kotlin", "stars")
 
     }
 

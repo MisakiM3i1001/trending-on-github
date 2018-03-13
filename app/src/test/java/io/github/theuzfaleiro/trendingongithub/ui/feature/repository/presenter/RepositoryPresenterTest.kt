@@ -50,6 +50,20 @@ class RepositoryPresenterTest {
 
     }
 
+    @Test
+    fun shouldDisplayErrorMessage_WhenDataWasNotFetchedFromApi() {
+        `when`(repositoryRepository.getRepositories("android", "stars")).thenReturn(getMockedError())
+
+        repositoryPresenter.getRepositoriesFromApi("android", "stars")
+
+        testScheduler.triggerActions()
+
+        verify(repositoryView, times(1)).changeViewFlipperPosition(2)
+
+        verify(repositoryView, times(1)).changeViewFlipperPosition(1)
+
+    }
+
     private fun getMockedRepositories(): Single<RepositoryList> =
             Single.just(RepositoryList(listOf(Repository("trending-on-github", "Most Awesome Repository In GitHub",
                     Owner("theuzfaleiro", "theuzfaleiro.svg"), 789, 4123))))

@@ -45,12 +45,12 @@ class RepositoryActivityTest {
 
         repositoryActivityTestRule.launchActivity(Intent())
 
-        onView(withId(R.id.recyclerViewRepositories)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(15))
+        onView(withId(R.id.recyclerViewRepositories)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
 
-        onView(withText("ijkplayer")).check(matches(isDisplayed()))
-        onView(withText("Android/iOS video player based on FFmpeg n3.4, with MediaCodec, VideoToolbox support.")).check(matches(isDisplayed()))
-        onView(withText("17911")).check(matches(isDisplayed()))
-        onView(withText("5104")).check(matches(isDisplayed()))
+        onView(withText("kotlin")).check(matches(isDisplayed()))
+        onView(withText("The Kotlin Programming Language")).check(matches(isDisplayed()))
+        onView(withText("21293")).check(matches(isDisplayed()))
+        onView(withText("2336")).check(matches(isDisplayed()))
     }
 
     @Test
@@ -70,7 +70,7 @@ class RepositoryActivityTest {
 
         repositoryActivityTestRule.launchActivity(Intent())
 
-        Thread.sleep(3000)
+        Thread.sleep(1000)
 
         val activityResult = Instrumentation.ActivityResult(Activity.RESULT_OK, Intent())
 
