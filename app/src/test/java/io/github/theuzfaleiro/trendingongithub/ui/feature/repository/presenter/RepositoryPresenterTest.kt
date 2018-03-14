@@ -47,7 +47,7 @@ class RepositoryPresenterTest {
 
         verify(repositoryView, times(1)).changeViewFlipperPosition(2)
 
-        verify(repositoryView, times(1)).displayRepositories(any<RepositoryList>())
+        verify(repositoryView, times(1)).displayRepositories(any())
 
         verify(repositoryView, times(1)).changeViewFlipperPosition(0)
 
