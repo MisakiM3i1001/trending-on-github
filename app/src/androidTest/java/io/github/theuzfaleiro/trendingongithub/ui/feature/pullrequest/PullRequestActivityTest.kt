@@ -4,12 +4,14 @@ import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
+import android.support.test.espresso.intent.Intents
+import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.rule.ActivityTestRule
 import android.support.v7.widget.RecyclerView
 import io.appflate.restmock.RESTMockServer
 import io.appflate.restmock.utils.RequestMatchers.pathContains
 import io.github.theuzfaleiro.trendingongithub.R
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -17,11 +19,15 @@ import org.junit.Test
 class PullRequestActivityTest {
 
     @get:Rule
-    private val pullRequestActivityTestRule = ActivityTestRule(PullRequestActivity::class.java, true, false)
+    val pullRequestActivityTestRule = IntentsTestRule(PullRequestActivity::class.java, true, false)
 
     @Before
     fun setUp() {
         RESTMockServer.reset()
+    }
+
+    @After
+    fun tearDown() {
     }
 
     @Test
@@ -30,10 +36,11 @@ class PullRequestActivityTest {
 
         pullRequestActivityTestRule.launchActivity(Intent())
 
-        onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(2))
+        onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.scrollToPosition
+        <RecyclerView.ViewHolder>(2))
 
         onView(withText("Frontend dependencies now use HTTPS. Fixes #1023")).check(matches(isDisplayed()))
-        //onView(withText("This should fix #1023")).check(matches(isDisplayed()))
+        onView(withText("This should fix #1023 ")).check(matches(isDisplayed()))
         onView(withText("TheWildHorse")).check(matches(isDisplayed()))
 
     }

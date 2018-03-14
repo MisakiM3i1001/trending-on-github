@@ -13,6 +13,7 @@ import android.support.test.espresso.intent.Intents.intending
 import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.rule.ActivityTestRule
 import android.support.v7.widget.RecyclerView
 import io.appflate.restmock.RESTMockServer
 import io.appflate.restmock.utils.RequestMatchers.pathContains
@@ -26,7 +27,7 @@ import org.junit.Test
 class RepositoryActivityTest {
 
     @get:Rule
-    private val repositoryActivityTestRule = IntentsTestRule(RepositoryActivity::class.java, true, false)
+    val repositoryActivityTestRule = IntentsTestRule(RepositoryActivity::class.java, true, false)
 
     @Before
     fun setUp() {
@@ -35,7 +36,7 @@ class RepositoryActivityTest {
 
     @After
     fun tearDown() {
-        Intents.release()
+        //Intents.release()
     }
 
     @Test

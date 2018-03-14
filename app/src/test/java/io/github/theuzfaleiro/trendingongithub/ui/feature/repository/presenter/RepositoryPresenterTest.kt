@@ -1,5 +1,9 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.times
+import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.whenever
 import io.github.theuzfaleiro.trendingongithub.data.network.repository.repository.RepositoryRepository
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Owner
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
@@ -11,7 +15,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -36,7 +39,7 @@ class RepositoryPresenterTest {
 
     @Test
     fun shouldDisplayRepositoryInformation_WhenDataWasFetchedFromApi() {
-        `when`(repositoryRepository.getRepositories("android", "stars")).thenReturn(getMockedRepositories())
+        whenever(repositoryRepository.getRepositories("android", "stars")).thenReturn(getMockedRepositories())
 
         repositoryPresenter.getRepositoriesFromApi("android", "stars")
 
@@ -44,7 +47,7 @@ class RepositoryPresenterTest {
 
         verify(repositoryView, times(1)).changeViewFlipperPosition(2)
 
-        verify(repositoryView, times(1)).displayRepositories(getMockedRepositoriesMock())
+        verify(repositoryView, times(1)).displayRepositories(any())
 
         verify(repositoryView, times(1)).changeViewFlipperPosition(0)
 
@@ -52,7 +55,7 @@ class RepositoryPresenterTest {
 
     @Test
     fun shouldDisplayErrorMessage_WhenDataWasNotFetchedFromApi() {
-        `when`(repositoryRepository.getRepositories("android", "stars")).thenReturn(getMockedError())
+        whenever(repositoryRepository.getRepositories("android", "stars")).thenReturn(getMockedError())
 
         repositoryPresenter.getRepositoriesFromApi("android", "stars")
 
@@ -69,9 +72,5 @@ class RepositoryPresenterTest {
                     Owner("theuzfaleiro", "theuzfaleiro.svg"), 789, 4123))))
 
     private fun getMockedError(): Single<RepositoryList> = Single.error(Throwable())
-
-    //TODO Search Why Do I Need This!
-    private fun getMockedRepositoriesMock(): RepositoryList = RepositoryList(listOf(Repository("trending-on-github", "Most Awesome Repository In GitHub",
-            Owner("theuzfaleiro", "theuzfaleiro.svg"), 789, 4123)))
 
 }
