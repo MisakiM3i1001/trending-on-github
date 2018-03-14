@@ -1,12 +1,13 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.Toast
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.network.response.pullrequest.PullRequest
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.presenter.PullRequestContract
+import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity
 import kotlinx.android.synthetic.main.activity_pull_request.*
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
 
     override fun showPullRequestsInformation(pullRequestList: List<PullRequest>) {
         recyclerViewPullRequest.adapter = PullRequestAdapter(pullRequestList, { pullRequest ->
-            Toast.makeText(this@PullRequestActivity, pullRequest.title, Toast.LENGTH_LONG).show()
+            startActivity(Intent(this@PullRequestActivity, PullRequestDetailActivity::class.java))
         })
     }
 
@@ -36,6 +37,8 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
         with(recyclerViewPullRequest) {
             layoutManager = LinearLayoutManager(this@PullRequestActivity,
                     LinearLayoutManager.VERTICAL, false)
+            adapter = PullRequestAdapter {}
+
             setHasFixedSize(true)
         }
     }

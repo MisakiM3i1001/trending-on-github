@@ -31,6 +31,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         with(recyclerViewRepositories) {
             layoutManager = LinearLayoutManager(this@RepositoryActivity,
                     LinearLayoutManager.VERTICAL, false)
+            adapter = RepositoryAdapter {}
             setHasFixedSize(true)
         }
     }

@@ -5,25 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageViewPullRequestLogo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTop8dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textViewPullRequestTitle"
         style="@style/BaseTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStart16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewPullRequestLogo"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPullRequestLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/full_names" />
 
     <TextView
@@ -31,6 +23,8 @@
         style="@style/BaseTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLines="4"
+        android:ellipsize="end"
         android:layout_marginTop="4dp"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestTitle"
@@ -38,11 +32,35 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestTitle"
         tools:text="@tools:sample/lorem" />
 
-    <android.support.constraint.Barrier
-        android:id="@+id/repositoryBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:barrierDirection="start"
-        app:constraint_referenced_ids="textViewPullRequestTitle,textViewPullRequestBody" />
+    <ImageView
+        android:id="@+id/imageViewPullRequestOwner"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/marginTop16dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewPullRequestBody"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestBody"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/textViewPullRequestUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestBody"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPullRequestOwner"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPullRequestOwner"
+        tools:text="@tools:sample/first_names" />
+
+
+    <TextView
+        android:id="@+id/textViewPullRequestFullName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestUsername"
+        app:layout_constraintStart_toStartOf="@+id/textViewPullRequestUsername"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestUsername"
+        tools:text="@tools:sample/full_names" />
 
 </android.support.constraint.ConstraintLayout>
