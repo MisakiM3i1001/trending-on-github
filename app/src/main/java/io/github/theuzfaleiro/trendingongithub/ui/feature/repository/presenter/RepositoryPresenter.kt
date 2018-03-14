@@ -1,8 +1,9 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter
 
+import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.data.network.repository.repository.RepositoryRepository
-import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
 import io.github.theuzfaleiro.trendingongithub.utils.RxSchedulers
+import io.reactivex.Observable
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 
@@ -13,18 +14,25 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
         repository.getRepositories(repositoryLanguage, sortOrder, page)
                 .subscribeOn(rxSchedulers.io())
                 .observeOn(rxSchedulers.ui())
-                .subscribeWith(object : SingleObserver<RepositoryList> {
-                    override fun onSubscribe(d: Disposable) {
-                        repositoryView.changeViewFlipperPosition(2)
+                .flatMap {
+                    Observable
+                            .fromIterable(it.repositoryList)
+                            .map {
+                                Repository(it)
+                            }
+                            .toList()
+                }
+                .subscribeWith(object : SingleObserver<MutableList<Repository>> {
+                    override fun onSuccess(t: MutableList<Repository>) {
+                        repositoryView.displayRepositories(t)
                     }
 
-                    override fun onSuccess(repositoryList: RepositoryList) {
-                        repositoryView.changeViewFlipperPosition(0)
-                        repositoryView.displayRepositories(repositoryList)
+                    override fun onSubscribe(d: Disposable) {
+
                     }
 
                     override fun onError(e: Throwable) {
-                        repositoryView.changeViewFlipperPosition(1)
+
                     }
                 })
     }

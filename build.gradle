@@ -26,13 +26,34 @@ allprojects {
 }
 
 ext {
-    supportDesignVersion = '27.1.0'
-    retrofitVersion = '2.3.0'
-    butterKnifeVersion = '8.8.1'
-    okHttpVersion = '3.9.1'
-    daggerVersion = '2.14.1'
-    glideVersion = '4.4.0'
-    espressoVersion = '3.0.1'
+    versions = [
+            supportDesignVersion : "27.1.0",
+            retrofitVersion : "2.3.0",
+            butterKnifeVersion : "8.8.1",
+            okHttpVersion : "3.9.1",
+            daggerVersion : "2.14.1",
+            glideVersion : "4.4.0",
+            rxJava : "2.1.10",
+            rxAndroid : "2.0.2",
+            rxAdapter : "2.3.0",
+            espressoVersion : "3.0.1"]
+
+    libs = [
+            appCompat             : "com.android.support:appcompat-v7:${versions.supportDesignVersion}",
+            supportDesign         : "com.android.support:design:${versions.supportDesignVersion}",
+
+            retrofit              : "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}",
+            retrofitConverter     : "com.squareup.retrofit2:converter-moshi:${versions.retrofitVersion}",
+
+            rxjava                : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
+            retrofitRxJavaAdaper  : "com.squareup.retrofit2:adapter-rxjava2:${versions.rxAdapter}",
+
+            okHttpInterceptor     : "com.squareup.okhttp3:logging-interceptor:${versions.okHttpVersion}",
+            dagger                : "com.google.dagger:dagger:${versions.daggerVersion}",
+            daggerSupport         : "com.google.dagger:dagger-android-support:${versions.daggerVersion}",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:${versions.daggerVersion}",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"]
 }
 
 task clean(type: Delete) {

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
-import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.RepositoryList
+import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
@@ -36,8 +36,8 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         }
     }
 
-    override fun displayRepositories(repositoryResponseList: RepositoryList) {
-        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList.repositoryList, { repositoryClick ->
+    override fun displayRepositories(repositoryResponseList: MutableList<Repository>) {
+        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositoryClick ->
             startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java))
         })
     }

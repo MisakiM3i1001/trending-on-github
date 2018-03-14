@@ -38,32 +38,39 @@ android {
     apply plugin: 'kotlin-kapt'
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "com.android.support:appcompat-v7:$supportDesignVersion"
-    implementation "com.android.support:design:$supportDesignVersion"
+    implementation libs.appCompat
+    implementation libs.supportDesign
     implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation libs.retrofit
+    implementation libs.retrofitConverter
+    implementation libs.retrofitRxJavaAdaper
 
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation libs.okHttpInterceptor
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation libs.dagger
+    implementation libs.daggerSupport
+    kapt libs.daggerCompiler
+    kapt libs.daggerAndroidProcessor
 
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation libs.rxjava
+    implementation libs.rxAndroid
+    implementation libs.retrofitRxJavaAdaper
+
+    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$versions.glideVersion"
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.13.0'
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+
 
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.9.1'
     androidTestImplementation 'com.github.andrzejchm.RESTMock:android:0.3.1'
@@ -71,9 +78,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
 
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$versions.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$versions.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$versions.espressoVersion"
 
 }
 
