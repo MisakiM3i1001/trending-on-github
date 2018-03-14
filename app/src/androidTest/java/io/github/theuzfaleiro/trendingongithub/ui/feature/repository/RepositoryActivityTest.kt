@@ -39,7 +39,7 @@ class RepositoryActivityTest {
     }
 
     @Test
-    fun shouldDisplayAndroidRepositories_WhenFetchDataFromAPI() {
+    fun shouldDisplayAndroidRepositories_WhenFetchedDataFromAPI() {
 
         RESTMockServer.whenGET(pathContains("search/repositories")).thenReturnFile(200, "repository/repository.json")
 
@@ -69,8 +69,6 @@ class RepositoryActivityTest {
         RESTMockServer.whenGET(pathContains("search/repositories")).thenReturnFile(200, "repository/repository.json")
 
         repositoryActivityTestRule.launchActivity(Intent())
-
-        Thread.sleep(1000)
 
         val activityResult = Instrumentation.ActivityResult(Activity.RESULT_OK, Intent())
 

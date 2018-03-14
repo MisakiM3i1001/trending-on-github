@@ -9,7 +9,7 @@ import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
 import kotlinx.android.synthetic.main.item_repository_layout.view.*
 
-class RepositoryAdapter(private val repositoryList: List<Repository>, private val clickListener: (repository: Repository) -> Unit) : RecyclerView.Adapter<RepositoryViewHolder>() {
+class RepositoryAdapter(private val repositoryList: List<Repository> = listOf(), private val clickListener: (repository: Repository) -> Unit) : RecyclerView.Adapter<RepositoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         return RepositoryViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_repository_layout, parent, false))
