@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
 
     compileSdkVersion 27
@@ -35,7 +37,6 @@ android {
         }
     }
 
-    apply plugin: 'kotlin-kapt'
 }
 
 dependencies {
@@ -76,7 +77,6 @@ dependencies {
     androidTestImplementation libs.espressoContrib
     androidTestImplementation libs.espressoIntents
 }
-
 
 repositories {
     mavenCentral()
