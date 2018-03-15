@@ -39,7 +39,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         }
     }
 
-    override fun displayRepositories(repositoryResponseList: MutableList<Repository>) {
+    override fun displayRepositories(repositoryResponseList: List<Repository>) {
         recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositoryClick ->
             startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java))
         })

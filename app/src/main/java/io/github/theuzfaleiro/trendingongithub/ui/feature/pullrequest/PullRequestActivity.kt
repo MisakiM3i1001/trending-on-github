@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
-import io.github.theuzfaleiro.trendingongithub.data.network.response.pullrequest.PullRequest
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.presenter.PullRequestContract
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity
@@ -27,11 +26,16 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
     }
 
 
-    override fun showPullRequestsInformation(pullRequestList: List<PullRequest>) {
+    override fun showPullRequestsInformation(pullRequestList: List<io.github.theuzfaleiro.trendingongithub.data.model.pullrequest.PullRequest>) {
         recyclerViewPullRequest.adapter = PullRequestAdapter(pullRequestList, { pullRequest ->
             startActivity(Intent(this@PullRequestActivity, PullRequestDetailActivity::class.java))
         })
     }
+
+    override fun changeViewFlipperPosition(viewFlipperPosition: Int) {
+        viewFlipperPullRequest.displayedChild = viewFlipperPosition
+    }
+
 
     private fun initPullRequestRecyclerView() {
         with(recyclerViewPullRequest) {

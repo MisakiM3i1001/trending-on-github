@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import io.github.theuzfaleiro.trendingongithub.R
-import io.github.theuzfaleiro.trendingongithub.data.network.response.pullrequest.PullRequest
+import io.github.theuzfaleiro.trendingongithub.data.model.pullrequest.PullRequest
 import kotlinx.android.synthetic.main.item_pull_request_layout.view.*
-
 
 class PullRequestAdapter(private val pullRequestList: List<PullRequest> = listOf(), private val clickListener: (pullRequest: PullRequest) -> Unit) : RecyclerView.Adapter<PullRequestViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PullRequestViewHolder {

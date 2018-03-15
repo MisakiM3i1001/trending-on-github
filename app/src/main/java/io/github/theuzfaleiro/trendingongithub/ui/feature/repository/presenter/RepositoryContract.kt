@@ -5,7 +5,7 @@ import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 interface RepositoryContract {
 
     interface View {
-        fun displayRepositories(repositoryResponseList: MutableList<Repository>)
+        fun displayRepositories(repositoryResponseList: List<Repository>)
 
         fun changeViewFlipperPosition(viewFlipperPosition: Int)
     }
