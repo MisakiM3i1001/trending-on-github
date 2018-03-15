@@ -8,7 +8,7 @@
 
     <style name="AppTheme.BrandedLaunch" parent="AppTheme">
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@drawable/branded_launch_screen</item>
+        <item name="android:windowBackground">@drawable/branded_launch</item>
     </style>
 
     <style name="BaseTextView">
