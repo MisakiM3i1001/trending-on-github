@@ -23,7 +23,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart16dp"
-        android:fontFamily="@font/vidaloka"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/repositoryBarrier"
         tools:text="@tools:sample/full_names" />
@@ -34,7 +33,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop8dp"
-        android:fontFamily="@font/lato"
         app:layout_constraintEnd_toEndOf="@+id/textViewRepositoryName"
         app:layout_constraintStart_toStartOf="@+id/textViewRepositoryName"
         app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryName"

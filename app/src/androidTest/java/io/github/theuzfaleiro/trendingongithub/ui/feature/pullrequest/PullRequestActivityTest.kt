@@ -41,7 +41,7 @@ class PullRequestActivityTest {
 
         onView(withText("Frontend dependencies now use HTTPS. Fixes #1023")).check(matches(isDisplayed()))
         onView(withText("This should fix #1023 ")).check(matches(isDisplayed()))
-        onView(withText("TheWildHorse")).check(matches(isDisplayed()))
+        onView(withText("theuzfaleiro'")).check(matches(isDisplayed()))
 
     }
 
