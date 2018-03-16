@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.pullrequest.PullRequest
 import kotlinx.android.synthetic.main.item_pull_request_layout.view.*
@@ -34,18 +35,28 @@ class PullRequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         itemView.apply {
 
             pullRequestTitle.text = pullRequest.title
-            pullRequestBody.text = pullRequest.body
+
+            pullRequestBody.text = getPullRequestAvailableBody(pullRequest)
 
             Glide.with(pullRequestOwnerPhoto.context)
                     .load(pullRequest.user.profilePhoto)
+                    .apply(RequestOptions().circleCrop())
                     .into(pullRequestOwnerPhoto)
 
-            //pullRequestFullName.text = pullRequest.user.username
+            pullRequestFullName.text = pullRequest.user.username
             pullRequestUsername.text = pullRequest.user.username
 
             setOnClickListener {
                 clickListener(pullRequest)
             }
+        }
+    }
+
+    private fun View.getPullRequestAvailableBody(pullRequest: PullRequest): CharSequence {
+        return if (!pullRequest.body.isEmpty()) {
+            pullRequest.body
+        } else {
+            resources.getText(R.string.activity_pull_requests_repository_has_no_description)
         }
     }
 }

@@ -2,6 +2,7 @@ package io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
@@ -41,6 +42,7 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
         with(recyclerViewPullRequest) {
             layoutManager = LinearLayoutManager(this@PullRequestActivity,
                     LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(this@PullRequestActivity, DividerItemDecoration.VERTICAL))
             adapter = PullRequestAdapter {}
 
             setHasFixedSize(true)

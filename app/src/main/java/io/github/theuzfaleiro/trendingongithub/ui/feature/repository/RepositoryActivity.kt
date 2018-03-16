@@ -2,6 +2,7 @@ package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
@@ -34,6 +35,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         with(recyclerViewRepositories) {
             layoutManager = LinearLayoutManager(this@RepositoryActivity,
                     LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(this@RepositoryActivity, DividerItemDecoration.VERTICAL))
             adapter = RepositoryAdapter {}
             setHasFixedSize(true)
         }

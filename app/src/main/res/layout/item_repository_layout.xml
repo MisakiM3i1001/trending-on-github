@@ -3,36 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/marginBottom8dp"
+    android:layout_marginTop="@dimen/marginTop8dp">
 
     <ImageView
         android:id="@+id/imageViewRepositoryLogo"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="@dimen/marginTop8dp"
+        android:contentDescription="@string/activity_repository_content_description_repository_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/textViewRepositoryName"
-        style="@style/BaseTextView"
+        style="@style/TextViewTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart16dp"
-        android:textSize="16sp"
+        android:fontFamily="@font/vidaloka"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewRepositoryLogo"
-        app:layout_constraintTop_toTopOf="@+id/imageViewRepositoryLogo"
+        app:layout_constraintStart_toEndOf="@+id/repositoryBarrier"
         tools:text="@tools:sample/full_names" />
 
     <TextView
         android:id="@+id/textViewRepositoryDescription"
-        style="@style/BaseTextView"
+        style="@style/TextViewDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="13sp"
+        android:layout_marginTop="@dimen/marginTop8dp"
+        android:fontFamily="@font/lato"
         app:layout_constraintEnd_toEndOf="@+id/textViewRepositoryName"
         app:layout_constraintStart_toStartOf="@+id/textViewRepositoryName"
         app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryName"
@@ -42,14 +44,17 @@
         android:id="@+id/repositoryBarrier"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:barrierDirection="start"
-        app:constraint_referenced_ids="textViewRepositoryName,textViewRepositoryDescription" />
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="imageViewRepositoryLogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewStarCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/activity_repository_content_description_fork_count"
         android:src="@drawable/ic_repository_fork"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewRepositoryDescription"
@@ -57,7 +62,7 @@
 
     <TextView
         android:id="@+id/textViewStarCount"
-        style="@style/BaseTextView"
+        style="@style/TextViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart8dp"
@@ -71,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart8dp"
+        android:contentDescription="@string/activity_repository_content_description_stars_count"
         android:src="@drawable/ic_repository_star"
         app:layout_constraintBottom_toBottomOf="@+id/textViewStarCount"
         app:layout_constraintStart_toEndOf="@+id/textViewStarCount"
@@ -78,7 +84,7 @@
 
     <TextView
         android:id="@+id/textViewForkCount"
-        style="@style/BaseTextView"
+        style="@style/TextViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart8dp"

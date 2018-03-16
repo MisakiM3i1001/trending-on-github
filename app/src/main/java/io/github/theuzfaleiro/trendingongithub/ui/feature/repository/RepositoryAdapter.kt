@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import kotlinx.android.synthetic.main.item_repository_layout.view.*
@@ -37,6 +38,7 @@ class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
             Glide.with(repositoryLogo.context)
                     .load(repository.owner.avatarUrl)
+                    .apply(RequestOptions().circleCrop())
                     .into(repositoryLogo)
 
             repositoryName.text = repository.name

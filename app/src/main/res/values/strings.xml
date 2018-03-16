@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Trending On GitHub</string>
+
+    <!--Activity -->
+    <string name="activity_repository">@string/app_name</string>
+    <string name="activity_pull_requests">Pull Requests</string>
+
+    <!--Repository-->
+    <string name="activity_repository_content_description_fork_count">Fork Count</string>
+    <string name="activity_repository_content_description_stars_count">Stars Count</string>
+    <string name="activity_repository_content_description_repository_logo">Repository Logo</string>
+
+
+    <!--Pull Requests-->
+    <string name="activity_pull_requests_repository_has_no_description">This repository has no description</string>
 </resources>
