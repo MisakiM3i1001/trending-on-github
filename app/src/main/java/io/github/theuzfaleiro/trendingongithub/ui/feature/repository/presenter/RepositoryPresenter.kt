@@ -22,14 +22,14 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
                             }
                             .toList()
                 }
-                .subscribeWith(object : SingleObserver<MutableList<Repository>> {
-                    override fun onSuccess(t: MutableList<Repository>) {
-                        repositoryView.changeViewFlipperPosition(0)
-                        repositoryView.displayRepositories(t)
-                    }
-
+                .subscribeWith(object : SingleObserver<List<Repository>> {
                     override fun onSubscribe(d: Disposable) {
                         repositoryView.changeViewFlipperPosition(2)
+                    }
+
+                    override fun onSuccess(t: List<Repository>) {
+                        repositoryView.changeViewFlipperPosition(0)
+                        repositoryView.displayRepositories(t)
                     }
 
                     override fun onError(e: Throwable) {
