@@ -40,11 +40,11 @@
             tools:listitem="@layout/item_repository_layout" />
 
         <ImageView
-            android:id="@+id/imageViewLoadingError"
+            android:id="@+id/imageViewRepositoryLoadingError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_signal_wifi_off" />
 
         <ProgressBar
             android:id="@+id/progressBarRepository"

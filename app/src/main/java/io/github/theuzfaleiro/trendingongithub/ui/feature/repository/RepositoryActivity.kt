@@ -35,7 +35,6 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         with(recyclerViewRepositories) {
             layoutManager = LinearLayoutManager(this@RepositoryActivity,
                     LinearLayoutManager.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(this@RepositoryActivity, DividerItemDecoration.VERTICAL))
             adapter = RepositoryAdapter {}
             setHasFixedSize(true)
         }
@@ -43,6 +42,11 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
     override fun displayRepositories(repositoryResponseList: List<Repository>) {
         recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositoryClick ->
+
+            val goToPullRequestActivity = Intent()
+
+            goToPullRequestActivity.putExtra("repositorySelected", repositoryClick)
+
             startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java))
         })
     }
