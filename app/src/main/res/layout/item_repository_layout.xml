@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +12,6 @@
         android:id="@+id/imageViewRepositoryLogo"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="@dimen/marginTop8dp"
         android:contentDescription="@string/activity_repository_content_description_repository_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +25,7 @@
         android:layout_marginStart="@dimen/marginStart16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/repositoryBarrier"
+        app:layout_constraintTop_toTopOf="@+id/imageViewRepositoryLogo"
         tools:text="@tools:sample/full_names" />
 
     <TextView
@@ -54,7 +55,6 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/activity_repository_content_description_fork_count"
         android:src="@drawable/ic_repository_fork"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewRepositoryDescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryDescription" />
 
@@ -90,5 +90,28 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewForkCount"
         app:layout_constraintTop_toTopOf="@+id/imageViewStarCount"
         tools:text="@tools:sample/us_phones" />
+
+    <TextView
+        android:id="@+id/textViewPullRequests"
+        style="@style/TextViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Pull Requests >"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewRepositoryName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewForkCount" />
+
+    <View
+        android:id="@+id/viewItemDivider"
+        style="@style/ItemDivider"
+        android:layout_width="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPullRequests"
+        app:layout_constraintStart_toStartOf="@+id/textViewRepositoryName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPullRequests" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,6 +8,15 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
+    signingConfigs {
+        signingInformation {
+            keyAlias 'trending-on-github'
+            keyPassword 'QGo*4TTH7uBNt=v'
+            storeFile file('/Users/matheusfaleiro/Dropbox/Study/Release Keys/trending-on-github/trending-on-github')
+            storePassword 'QGo*4TTH7uBNt=v'
+        }
+    }
+
     compileSdkVersion 27
 
     defaultConfig {
@@ -25,58 +34,43 @@ android {
             shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
             buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
         }
 
         release {
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
             buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+            signingConfig signingConfigs.signingInformation
         }
     }
-
     androidExtensions {
         experimental true
     }
-
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     implementation libs.appCompat
     implementation libs.supportDesign
     implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
-
     implementation libs.retrofit
     implementation libs.retrofitConverter
     implementation libs.retrofitRxJavaAdaper
-
     implementation libs.okHttpInterceptor
-
     implementation libs.dagger
     implementation libs.daggerSupport
     kapt libs.daggerCompiler
     kapt libs.daggerAndroidProcessor
-
     implementation libs.rxjava
     implementation libs.rxAndroid
-
     implementation libs.glide
     kapt libs.glideCompiler
-
     testImplementation 'junit:junit:4.12'
     testImplementation libs.mockitoKotlin
-
     testImplementation libs.mockWebServer
     androidTestImplementation libs.restMock
-
     androidTestImplementation libs.androidTestRunner
     androidTestImplementation libs.androidTestRules
-
     androidTestImplementation libs.espressoCore
     androidTestImplementation libs.espressoContrib
     androidTestImplementation libs.espressoIntents

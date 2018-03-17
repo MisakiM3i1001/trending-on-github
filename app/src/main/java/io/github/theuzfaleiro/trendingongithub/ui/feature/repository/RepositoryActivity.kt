@@ -35,7 +35,6 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         with(recyclerViewRepositories) {
             layoutManager = LinearLayoutManager(this@RepositoryActivity,
                     LinearLayoutManager.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(this@RepositoryActivity, DividerItemDecoration.VERTICAL))
             adapter = RepositoryAdapter {}
             setHasFixedSize(true)
         }

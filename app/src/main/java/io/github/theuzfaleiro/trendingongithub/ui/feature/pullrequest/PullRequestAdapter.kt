@@ -27,7 +27,6 @@ class PullRequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     private val pullRequestTitle = itemView.textViewPullRequestTitle
     private val pullRequestBody = itemView.textViewPullRequestBody
     private val pullRequestOwnerPhoto = itemView.imageViewPullRequestOwner
-    private val pullRequestFullName = itemView.textViewPullRequestFullName
     private val pullRequestUsername = itemView.textViewPullRequestUsername
 
     fun bindItemsToView(pullRequest: PullRequest, clickListener: (pullRequest: PullRequest) -> Unit) {
@@ -43,7 +42,6 @@ class PullRequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                     .apply(RequestOptions().circleCrop())
                     .into(pullRequestOwnerPhoto)
 
-            pullRequestFullName.text = pullRequest.user.username
             pullRequestUsername.text = pullRequest.user.username
 
             setOnClickListener {

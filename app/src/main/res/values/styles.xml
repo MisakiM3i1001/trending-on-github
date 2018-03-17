@@ -11,6 +11,8 @@
         <item name="android:windowBackground">@drawable/branded_launch</item>
     </style>
 
+
+    <!--Text View-->
     <style name="TextViewTitle">
         <item name="android:textColor">@color/textViewBlazeRed</item>
         <item name="android:textSize">@dimen/titleSize</item>
@@ -22,6 +24,13 @@
         <item name="android:textColor">@color/textViewOpaqueBlack</item>
         <item name="android:textSize">@dimen/descriptionSize</item>
         <item name="android:fontFamily">@font/lato</item>
+    </style>
+
+    <!--Divider-->
+    <style name="ItemDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerPlatinum</item>
     </style>
 
 </resources>
