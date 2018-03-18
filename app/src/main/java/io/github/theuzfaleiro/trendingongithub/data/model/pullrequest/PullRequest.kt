@@ -1,12 +1,15 @@
 package io.github.theuzfaleiro.trendingongithub.data.model.pullrequest
 
+import android.os.Parcelable
 import io.github.theuzfaleiro.trendingongithub.data.network.response.pullrequest.PullRequest
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PullRequest(val htmlUrl: String,
                        val title: String,
                        val user: User,
                        val body: String,
-                       val createdAt: String) {
+                       val createdAt: String) : Parcelable {
     constructor(pullRequest: PullRequest) : this(
             htmlUrl = pullRequest.htmlUrl,
             title = pullRequest.title,

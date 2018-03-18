@@ -2,7 +2,6 @@ package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
@@ -15,7 +14,7 @@ import javax.inject.Inject
 class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
     @Inject
-    lateinit var repositoryPresent: RepositoryContract.Presenter
+    lateinit var repositoryPresenter: RepositoryContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -27,7 +26,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
         initRepositoryRecyclerView()
 
-        repositoryPresent.getRepositoriesFromApi("kotlin", "stars")
+        repositoryPresenter.getRepositoriesFromApi("kotlin", "stars")
 
     }
 
@@ -35,19 +34,15 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
         with(recyclerViewRepositories) {
             layoutManager = LinearLayoutManager(this@RepositoryActivity,
                     LinearLayoutManager.VERTICAL, false)
-            adapter = RepositoryAdapter {}
             setHasFixedSize(true)
         }
     }
 
     override fun displayRepositories(repositoryResponseList: List<Repository>) {
-        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositoryClick ->
+        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositorySelected ->
 
-            val goToPullRequestActivity = Intent()
+            startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java).putExtra("REPOSITORY_SELECTED", repositorySelected))
 
-            goToPullRequestActivity.putExtra("repositorySelected", repositoryClick)
-
-            startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java))
         })
     }
 
