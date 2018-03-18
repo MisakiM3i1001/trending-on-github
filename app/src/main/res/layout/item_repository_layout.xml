@@ -52,9 +52,11 @@
         android:id="@+id/imageViewStarCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/activity_repository_content_description_fork_count"
         android:src="@drawable/ic_repository_fork"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewRepositoryDescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewRepositoryDescription" />
 
@@ -67,7 +69,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewStarCount"
         app:layout_constraintStart_toEndOf="@+id/imageViewStarCount"
         app:layout_constraintTop_toTopOf="@+id/imageViewStarCount"
-        tools:text="@tools:sample/us_phones" />
+        tools:text="@tools:sample/date/ddmmyy" />
 
     <ImageView
         android:id="@+id/imageViewForkCount"
@@ -89,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewForkCount"
         app:layout_constraintStart_toEndOf="@+id/imageViewForkCount"
         app:layout_constraintTop_toTopOf="@+id/imageViewStarCount"
-        tools:text="@tools:sample/us_phones" />
+        tools:text="@tools:sample/date/ddmmyy" />
 
     <TextView
         android:id="@+id/textViewPullRequests"
@@ -97,12 +99,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
         android:text="Pull Requests >"
         android:textAllCaps="true"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewStarCount"
         app:layout_constraintEnd_toEndOf="@+id/textViewRepositoryName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewForkCount" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewStarCount" />
 
     <View
         android:id="@+id/viewItemDivider"

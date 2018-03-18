@@ -14,7 +14,7 @@ import javax.inject.Inject
 class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
     @Inject
-    lateinit var repositoryPresent: RepositoryContract.Presenter
+    lateinit var repositoryPresenter: RepositoryContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -26,7 +26,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
         initRepositoryRecyclerView()
 
-        repositoryPresent.getRepositoriesFromApi("kotlin", "stars")
+        repositoryPresenter.getRepositoriesFromApi("kotlin", "stars")
 
     }
 
