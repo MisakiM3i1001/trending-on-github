@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
+import io.github.theuzfaleiro.trendingongithub.data.model.pullrequest.PullRequest
+import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.presenter.PullRequestContract
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity
@@ -21,16 +23,22 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
 
         setContentView(R.layout.activity_pull_request)
 
-        initPullRequestRecyclerView()
+        pullRequestPresenter.initPresenter(intent.hasExtra(REPOSITORY_SELECTED))
 
-        pullRequestPresenter.getDataFromApi()
+        initPullRequestRecyclerView()
     }
 
 
-    override fun showPullRequestsInformation(pullRequestList: List<io.github.theuzfaleiro.trendingongithub.data.model.pullrequest.PullRequest>) {
-        recyclerViewPullRequest.adapter = PullRequestAdapter(pullRequestList, { pullRequest ->
-            startActivity(Intent(this@PullRequestActivity, PullRequestDetailActivity::class.java))
+    override fun showPullRequestsInformation(pullRequestList: List<PullRequest>) {
+        recyclerViewPullRequest.adapter = PullRequestAdapter(pullRequestList, { pullRequestSelected ->
+            startActivity(Intent(this@PullRequestActivity, PullRequestDetailActivity::class.java).putExtra("PULL_REQUEST_SELECTED", pullRequestSelected))
         })
+    }
+
+    override fun getPullRequestInformation() {
+        val selectedRepository: Repository = intent.getParcelableExtra(REPOSITORY_SELECTED)
+
+        pullRequestPresenter.getDataFromApi(selectedRepository.owner.userName, selectedRepository.name)
     }
 
     override fun changeViewFlipperPosition(viewFlipperPosition: Int) {
@@ -47,5 +55,10 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
 
             setHasFixedSize(true)
         }
+    }
+
+
+    companion object {
+        private const val REPOSITORY_SELECTED: String = "REPOSITORY_SELECTED"
     }
 }

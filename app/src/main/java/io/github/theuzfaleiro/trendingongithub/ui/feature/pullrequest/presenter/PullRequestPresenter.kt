@@ -9,8 +9,17 @@ import io.reactivex.disposables.Disposable
 
 class PullRequestPresenter(private val pullRequestView: PullRequestContract.View, private val pullRequestRepository: PullRequestRepository, private val rxSchedulers: RxSchedulers) : PullRequestContract.Presenter {
 
-    override fun getDataFromApi() {
-        pullRequestRepository.getPullRequestsFromSelectedRepository("JakeWharton", "butterknife")
+
+    override fun initPresenter(hasRepositorySelected: Boolean) {
+        if (hasRepositorySelected) {
+            pullRequestView.getPullRequestInformation()
+        } else {
+            pullRequestView.changeViewFlipperPosition(1)
+        }
+    }
+
+    override fun getDataFromApi(repositoryOwner: String, repositoryName: String) {
+        pullRequestRepository.getPullRequestsFromSelectedRepository(repositoryOwner, repositoryName)
                 .subscribeOn((rxSchedulers.io()))
                 .observeOn(rxSchedulers.ui())
                 .flatMap {

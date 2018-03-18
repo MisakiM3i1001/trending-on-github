@@ -8,9 +8,13 @@ interface PullRequestContract {
         fun showPullRequestsInformation(pullRequestList: List<PullRequest>)
 
         fun changeViewFlipperPosition(viewFlipperPosition: Int)
+        fun getPullRequestInformation()
     }
 
     interface Presenter {
-        fun getDataFromApi()
+
+        fun initPresenter(hasRepositorySelected: Boolean)
+
+        fun getDataFromApi(repositoryOwner: String, repositoryName: String)
     }
 }
