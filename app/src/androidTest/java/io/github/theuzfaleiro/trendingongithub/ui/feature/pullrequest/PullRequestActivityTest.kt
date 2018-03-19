@@ -30,12 +30,13 @@ class PullRequestActivityTest {
         RESTMockServer.reset()
     }
 
-    @Ignore
     @Test
     fun shouldShowPullRequestDetails_WhenFetchedDataFromAPI() {
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnFile(200, "pullrequest/pullrequest.json")
 
-        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED", Repository("oi", "oi", Owner("oi", "oi"), 1, 1)))
+        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED",
+                Repository("trending-on-github", "What's Trending on GitHub Website"
+                        , Owner("Matheus Faleiro", "theuzfaleiro.png"), 42, 42)))
 
         onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.scrollToPosition
         <RecyclerView.ViewHolder>(2))
@@ -46,6 +47,7 @@ class PullRequestActivityTest {
 
     }
 
+    @Ignore
     @Test
     fun shouldDisplayErrorMessage_WhenFailingFetchingDataFromAPI() {
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnEmpty(404)
@@ -61,7 +63,9 @@ class PullRequestActivityTest {
 
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnFile(200, "pullrequest/pullrequest.json")
 
-        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED", Repository("oi", "oi", Owner("oi", "oi"), 1, 1)))
+        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED",
+                Repository("trending-on-github", "What's Trending on GitHub Website"
+                        , Owner("Matheus Faleiro", "theuzfaleiro.png"), 42, 42)))
 
         val activityResult = Instrumentation.ActivityResult(Activity.RESULT_OK, Intent())
 
