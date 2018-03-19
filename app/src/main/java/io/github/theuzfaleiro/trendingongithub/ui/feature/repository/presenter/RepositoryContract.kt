@@ -11,6 +11,8 @@ interface RepositoryContract {
     }
 
     interface Presenter {
+        fun initPresenter()
+
         fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int = 1)
     }
 }

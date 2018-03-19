@@ -30,12 +30,22 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
         setContentView(R.layout.activity_repository)
 
+        repositoryPresenter.initPresenter()
+
         initAdapter()
 
         initRepositoryRecyclerView()
 
         repositoryPresenter.getRepositoriesFromApi("java", "stars")
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.run {
+            putString("AAA", "BBB")
+//            putParcelableArray("hadouken", List<Repository>().toTypedArray())
+        }
+        super.onSaveInstanceState(outState)
     }
 
     private fun initAdapter() {

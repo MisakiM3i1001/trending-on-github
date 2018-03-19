@@ -18,7 +18,10 @@ import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Owner
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity
-import org.junit.*
+import org.hamcrest.CoreMatchers.allOf
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
 class PullRequestActivityTest {
 
@@ -71,7 +74,7 @@ class PullRequestActivityTest {
 
         onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
 
-        Intents.intended(IntentMatchers.hasComponent(PullRequestDetailActivity::class.java.name))
+        Intents.intended(allOf(IntentMatchers.hasComponent(PullRequestDetailActivity::class.java.name), IntentMatchers.hasExtraWithKey("PULL_REQUEST_SELECTED")))
     }
 
 }
