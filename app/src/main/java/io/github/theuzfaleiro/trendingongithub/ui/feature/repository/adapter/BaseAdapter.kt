@@ -8,7 +8,7 @@ import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.Adapter
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.ViewType
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.ViewTypeAdapter
 
-class DelegateAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BaseAdapter(clickListener: (repository: Repository) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: ArrayList<ViewType>
     private var delegateAdapters = SparseArrayCompat<ViewTypeAdapter>()
@@ -18,13 +18,10 @@ class DelegateAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     init {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingAdapter())
-        delegateAdapters.put(AdapterConstants.REPOSITORY, RepositoryAdapter {
-
-        })
+        delegateAdapters.put(AdapterConstants.REPOSITORY, RepositoryAdapter(clickListener))
 
         items = ArrayList()
         items.add(loadingItem)
-
     }
 
     override fun getItemCount(): Int = items.size

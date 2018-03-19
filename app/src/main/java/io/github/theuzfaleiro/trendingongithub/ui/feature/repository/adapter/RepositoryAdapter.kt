@@ -1,10 +1,11 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.ViewType
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.ViewTypeAdapter
@@ -20,7 +21,7 @@ class RepositoryAdapter(private val clickListener: (repository: Repository) -> U
         (holder as RepositoryViewHolder).bindItemsToView(item as Repository, clickListener)
     }
 
-    inner class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class RepositoryViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_repository_layout, parent, false)) {
 
         private val repositoryLogo = itemView.imageViewRepositoryLogo
         private val repositoryName = itemView.textViewRepositoryName

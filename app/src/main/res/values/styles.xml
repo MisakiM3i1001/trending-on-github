@@ -6,6 +6,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="WithoutActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="BrandedLaunch" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@drawable/branded_launch</item>

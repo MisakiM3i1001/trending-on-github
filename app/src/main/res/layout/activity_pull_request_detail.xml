@@ -6,14 +6,28 @@
     android:layout_height="match_parent"
     tools:context="io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity">
 
-    <WebView
-        android:id="@+id/webViewPullRequestDetail"
+    <ViewFlipper
+        android:id="@+id/viewFlipperPullRequestDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <WebView
+            android:id="@+id/webViewPullRequestDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/imageViewPullRequestDetailError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/trending_on_github_content_description_error_image"
+            android:src="@drawable/ic_error_image" />
+    </ViewFlipper>
+
 
 </android.support.constraint.ConstraintLayout>

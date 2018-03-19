@@ -34,7 +34,7 @@ class PullRequestActivityTest {
     fun shouldShowPullRequestDetails_WhenFetchedDataFromAPI() {
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnFile(200, "pullrequest/pullrequest.json")
 
-        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED",
+        pullRequestActivityTestRule.launchActivity(Intent().putExtra("REPOSITORY_SELECTED",
                 Repository("trending-on-github", "What's Trending on GitHub Website"
                         , Owner("Matheus Faleiro", "theuzfaleiro.png"), 42, 42)))
 
@@ -47,7 +47,6 @@ class PullRequestActivityTest {
 
     }
 
-    @Ignore
     @Test
     fun shouldDisplayErrorMessage_WhenFailingFetchingDataFromAPI() {
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnEmpty(404)
@@ -57,13 +56,12 @@ class PullRequestActivityTest {
         onView(withId(R.id.imageViewRepositoryLoadingError)).check(matches(isDisplayed()))
     }
 
-    @Ignore
     @Test
     fun shouldOpenPullRequestActivity_WhenARepositoryWasSelected() {
 
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnFile(200, "pullrequest/pullrequest.json")
 
-        pullRequestActivityTestRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED",
+        pullRequestActivityTestRule.launchActivity(Intent().putExtra("REPOSITORY_SELECTED",
                 Repository("trending-on-github", "What's Trending on GitHub Website"
                         , Owner("Matheus Faleiro", "theuzfaleiro.png"), 42, 42)))
 

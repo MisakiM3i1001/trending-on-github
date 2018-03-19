@@ -29,13 +29,14 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestTitle"
         app:layout_constraintStart_toStartOf="@+id/textViewPullRequestTitle"
         app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestTitle"
-        tools:text="@tools:sample/lorem" />
+        tools:text="@tools:sample/lorem/random" />
 
     <ImageView
         android:id="@+id/imageViewPullRequestOwner"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginTop="@dimen/marginTop16dp"
+        android:contentDescription="@string/activity_pull_request_content_description_pull_request_owner"
         app:layout_constraintStart_toStartOf="@+id/textViewPullRequestBody"
         app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestBody"
         tools:src="@tools:sample/backgrounds/scenic" />
@@ -50,17 +51,5 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewPullRequestOwner"
         app:layout_constraintTop_toTopOf="@+id/imageViewPullRequestOwner"
         tools:text="@tools:sample/first_names" />
-
-
-    <TextView
-        android:id="@+id/textViewPullRequestFullName"
-        style="@style/TextViewDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTop8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewPullRequestUsername"
-        app:layout_constraintStart_toStartOf="@+id/textViewPullRequestUsername"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPullRequestUsername"
-        tools:text="@tools:sample/full_names" />
 
 </android.support.constraint.ConstraintLayout>
