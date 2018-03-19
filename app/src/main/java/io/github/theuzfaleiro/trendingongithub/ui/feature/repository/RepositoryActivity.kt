@@ -1,12 +1,12 @@
 package io.github.theuzfaleiro.trendingongithub.ui.feature.repository
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
-import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
+import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.InfiniteScrollListener
+import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.adapter.DelegateAdapter
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
 import kotlinx.android.synthetic.main.activity_repository.*
 import javax.inject.Inject
@@ -32,18 +32,16 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
     private fun initRepositoryRecyclerView() {
         with(recyclerViewRepositories) {
-            layoutManager = LinearLayoutManager(this@RepositoryActivity,
-                    LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
+            addOnScrollListener(InfiniteScrollListener({
+                repositoryPresenter.getRepositoriesFromApi("kotlin", "stars", 1)
+            }, layoutManager = LinearLayoutManager(this@RepositoryActivity,
+                    LinearLayoutManager.VERTICAL, false)))
         }
     }
 
     override fun displayRepositories(repositoryResponseList: List<Repository>) {
-        recyclerViewRepositories.adapter = RepositoryAdapter(repositoryResponseList, { repositorySelected ->
-
-            startActivity(Intent(this@RepositoryActivity, PullRequestActivity::class.java).putExtra("REPOSITORY_SELECTED", repositorySelected))
-
-        })
+        recyclerViewRepositories.adapter = DelegateAdapter()
     }
 
     override fun changeViewFlipperPosition(viewFlipperPosition: Int) {
