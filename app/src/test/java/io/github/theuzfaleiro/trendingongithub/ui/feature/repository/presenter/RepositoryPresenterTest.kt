@@ -61,10 +61,7 @@ class RepositoryPresenterTest {
 
         testScheduler.triggerActions()
 
-        verify(repositoryView, times(1)).changeViewFlipperPosition(2)
-
         verify(repositoryView, times(1)).changeViewFlipperPosition(1)
-
     }
 
     private fun getMockedRepositories(): Single<RepositoryList> =

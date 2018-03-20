@@ -6,6 +6,8 @@ import dagger.android.ContributesAndroidInjector
 import io.github.theuzfaleiro.trendingongithub.di.scope.PerActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.di.PullRequestModule
+import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.PullRequestDetailActivity
+import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequestdetail.di.PullRequestDetailModule
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.RepositoryActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.di.RepositoryModule
 
@@ -19,4 +21,8 @@ internal abstract class ActivityBuilder {
     @PerActivity
     @ContributesAndroidInjector(modules = [(PullRequestModule::class)])
     internal abstract fun pullRequestActivityInjector(): PullRequestActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [(PullRequestDetailModule::class)])
+    internal abstract fun pullRequestDetailActivityInjector(): PullRequestDetailActivity
 }

@@ -9,6 +9,10 @@ import io.reactivex.disposables.Disposable
 
 class RepositoryPresenter(private val repositoryView: RepositoryContract.View, private val repository: RepositoryRepository, private val rxSchedulers: RxSchedulers) : RepositoryContract.Presenter {
 
+    override fun initPresenter() {
+       repositoryView.changeViewFlipperPosition(2)
+    }
+
     override fun getRepositoriesFromApi(repositoryLanguage: String, sortOrder: String, page: Int) {
 
         repository.getRepositories(repositoryLanguage, sortOrder, page)
@@ -24,10 +28,11 @@ class RepositoryPresenter(private val repositoryView: RepositoryContract.View, p
                 }
                 .subscribeWith(object : SingleObserver<List<Repository>> {
                     override fun onSubscribe(d: Disposable) {
-                        repositoryView.changeViewFlipperPosition(2)
                     }
 
                     override fun onSuccess(t: List<Repository>) {
+                        repositoryView.changeViewFlipperPosition(2)
+
                         repositoryView.changeViewFlipperPosition(0)
                         repositoryView.displayRepositories(t)
                     }
