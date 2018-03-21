@@ -64,7 +64,7 @@ class PullRequestActivityTest {
 
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnFile(200, "pullrequest/pullrequest.json")
 
-        pullRequestActivityTestRule.launchActivity(Intent().putExtra("REPOSITORY_SELECTED",
+        pullRequestActivityTestRule.launchActivity(Intent().putExtra(PullRequestActivity.REPOSITORY_SELECTED,
                 Repository("trending-on-github", "What's Trending on GitHub Website"
                         , Owner("Matheus Faleiro", "theuzfaleiro.png"), 42, 42)))
 
@@ -74,7 +74,7 @@ class PullRequestActivityTest {
 
         onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
 
-        Intents.intended(allOf(IntentMatchers.hasComponent(PullRequestDetailActivity::class.java.name), IntentMatchers.hasExtraWithKey("PULL_REQUEST_SELECTED")))
+        Intents.intended(allOf(IntentMatchers.hasComponent(PullRequestDetailActivity::class.java.name), IntentMatchers.hasExtraWithKey(PullRequestDetailActivity.PULL_REQUEST_SELECTED)))
     }
 
 }

@@ -8,7 +8,7 @@ import io.github.theuzfaleiro.trendingongithub.data.model.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.BaseActivity
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.InfiniteScrollListener
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
-import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.adapter.BaseAdapter
+import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.adapter.GenericAdapter
 import io.github.theuzfaleiro.trendingongithub.ui.feature.repository.presenter.RepositoryContract
 import kotlinx.android.synthetic.main.activity_repository.*
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
     @Inject
     lateinit var repositoryPresenter: RepositoryContract.Presenter
 
-    lateinit var baseAdapter: BaseAdapter
+    lateinit var genericAdapter: GenericAdapter
 
     var apiPagination = 1
 
@@ -49,9 +49,9 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
     }
 
     private fun initAdapter() {
-        baseAdapter = BaseAdapter { repositorySelected ->
+        genericAdapter = GenericAdapter { repositorySelected ->
             startActivity(Intent(this@RepositoryActivity,
-                    PullRequestActivity::class.java).putExtra("REPOSITORY_SELECTED", repositorySelected))
+                    PullRequestActivity::class.java).putExtra(PullRequestActivity.REPOSITORY_SELECTED, repositorySelected))
         }
     }
 
@@ -62,7 +62,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
             val a = LinearLayoutManager(this@RepositoryActivity)
 
             layoutManager = a
-            adapter = baseAdapter
+            adapter = genericAdapter
             addOnScrollListener(InfiniteScrollListener({
                 repositoryPresenter.getRepositoriesFromApi("java", "stars", apiPagination++)
             }, layoutManager = a))
@@ -71,7 +71,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
     }
 
     override fun displayRepositories(repositoryResponseList: List<Repository>) {
-        baseAdapter.addNews(repositoryResponseList)
+        genericAdapter.addNews(repositoryResponseList)
     }
 
     override fun changeViewFlipperPosition(viewFlipperPosition: Int) {
