@@ -73,8 +73,6 @@ dependencies {
     androidTestImplementation libs.espressoCore
     androidTestImplementation libs.espressoContrib
     androidTestImplementation libs.espressoIntents
-
-    implementation "com.android.support:cardview-v7:27.1.0"
 }
 
 repositories {
