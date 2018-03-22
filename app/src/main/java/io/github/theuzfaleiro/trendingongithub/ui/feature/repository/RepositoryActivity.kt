@@ -18,9 +18,9 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
     @Inject
     lateinit var repositoryPresenter: RepositoryContract.Presenter
 
-    lateinit var baseAdapter: BaseAdapter
+    private lateinit var baseAdapter: BaseAdapter
 
-    var apiPagination = 1
+    private var apiPagination = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
