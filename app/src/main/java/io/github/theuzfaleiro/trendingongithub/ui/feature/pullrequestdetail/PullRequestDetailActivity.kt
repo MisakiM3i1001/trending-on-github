@@ -30,6 +30,6 @@ class PullRequestDetailActivity : BaseActivity(), PullRequestDetailContract.View
 
 
     companion object {
-        private const val PULL_REQUEST_SELECTED: String = "PULL_REQUEST_SELECTED"
+        const val PULL_REQUEST_SELECTED: String = "PULL_REQUEST_SELECTED"
     }
 }
