@@ -18,4 +18,6 @@
     <!--Pull Requests-->
     <string name="activity_pull_requests_repository_has_no_description">This repository has no description</string>
     <string name="activity_pull_request_content_description_pull_request_owner">Pull Request Owner</string>
+    <string name="activity_repository_developed_by">by</string>
+    <string name="activity_repository_pull_requests">Pull Requests ></string>
 </resources>

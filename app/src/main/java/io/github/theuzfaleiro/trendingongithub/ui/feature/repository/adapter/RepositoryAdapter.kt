@@ -25,6 +25,7 @@ class RepositoryAdapter(private val clickListener: (repository: Repository) -> U
 
         private val repositoryLogo = itemView.imageViewRepositoryLogo
         private val repositoryName = itemView.textViewRepositoryName
+        private val repositoryOwner = itemView.textViewRepositoryOwner
         private val repositoryDescription = itemView.textViewRepositoryDescription
         private val repositoryStarCount = itemView.textViewStarCount
         private val repositoryForkCount = itemView.textViewForkCount
@@ -39,6 +40,7 @@ class RepositoryAdapter(private val clickListener: (repository: Repository) -> U
                         .into(repositoryLogo)
 
                 repositoryName.text = repository.name
+                repositoryOwner.text = repository.owner.userName
                 repositoryDescription.text = repository.description
                 repositoryStarCount.text = repository.starCount.toString()
                 repositoryForkCount.text = repository.forkCount.toString()

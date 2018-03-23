@@ -20,7 +20,7 @@ class RepositoryActivity : BaseActivity(), RepositoryContract.View {
 
     lateinit var genericAdapter: GenericAdapter
 
-    var apiPagination = 1
+    private var apiPagination = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

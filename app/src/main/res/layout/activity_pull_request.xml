@@ -23,9 +23,15 @@
         android:id="@+id/imageViewRepositoryLoadingError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/trending_on_github_content_description_error_image"
         android:layout_gravity="center"
+        android:contentDescription="@string/trending_on_github_content_description_error_image"
         android:src="@drawable/ic_error_image" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRepository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </ViewFlipper>
 
