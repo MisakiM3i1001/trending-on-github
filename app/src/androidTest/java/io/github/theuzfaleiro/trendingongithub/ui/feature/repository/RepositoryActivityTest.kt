@@ -10,6 +10,7 @@ import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.intent.Intents.intended
 import android.support.test.espresso.intent.Intents.intending
 import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
+import android.support.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey
 import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v7.widget.RecyclerView
@@ -17,6 +18,7 @@ import io.appflate.restmock.RESTMockServer
 import io.appflate.restmock.utils.RequestMatchers.pathContains
 import io.github.theuzfaleiro.trendingongithub.R
 import io.github.theuzfaleiro.trendingongithub.ui.feature.pullrequest.PullRequestActivity
+import org.hamcrest.core.AllOf.allOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -38,12 +40,12 @@ class RepositoryActivityTest {
 
         repositoryActivityTestRule.launchActivity(Intent())
 
-        onView(withId(R.id.recyclerViewRepositories)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+        onView(withId(R.id.recyclerViewRepositories)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(2))
 
-        onView(withText("shadowsocks-android")).check(matches(isDisplayed()))
-        onView(withText("A shadowsocks client for Android")).check(matches(isDisplayed()))
-        onView(withText("12989")).check(matches(isDisplayed()))
-        onView(withText("6307")).check(matches(isDisplayed()))
+        onView(withText("kotlin")).check(matches(isDisplayed()))
+        onView(withText("The Kotlin Programming Language")).check(matches(isDisplayed()))
+        onView(withText("21293")).check(matches(isDisplayed()))
+        onView(withText("2336")).check(matches(isDisplayed()))
     }
 
     @Test
@@ -69,6 +71,6 @@ class RepositoryActivityTest {
 
         onView(withId(R.id.recyclerViewRepositories)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
 
-        intended(hasComponent(PullRequestActivity::class.java.name))
+        intended(allOf(hasComponent(PullRequestActivity::class.java.name), hasExtraWithKey(PullRequestActivity.REPOSITORY_SELECTED)))
     }
 }

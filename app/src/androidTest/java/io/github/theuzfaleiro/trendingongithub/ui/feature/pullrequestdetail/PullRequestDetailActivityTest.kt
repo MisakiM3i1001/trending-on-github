@@ -26,7 +26,7 @@ class PullRequestDetailActivityTest {
 
     @Test
     fun shouldShowPullRequestDetailWebView_WhenPullRequestHasUrl() {
-        pullRequestDetailActivityRule.launchActivity(Intent().putExtra("PULL_REQUEST_SELECTED",
+        pullRequestDetailActivityRule.launchActivity(Intent().putExtra(PullRequestDetailActivity.PULL_REQUEST_SELECTED,
                 PullRequest("trending-on-github.html", "What's Trending on GitHub Website",
                         User("theuzfaleiro", "avatar42.png"), "The #42 PR Solves Everything"
                         , "18/04/2018")))

@@ -31,7 +31,8 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
 
     override fun showPullRequestsInformation(pullRequestList: List<PullRequest>) {
         recyclerViewPullRequest.adapter = PullRequestAdapter(pullRequestList, { pullRequestSelected ->
-            startActivity(Intent(this@PullRequestActivity, PullRequestDetailActivity::class.java).putExtra("PULL_REQUEST_SELECTED", pullRequestSelected))
+            startActivity(Intent(this@PullRequestActivity,
+                    PullRequestDetailActivity::class.java).putExtra(PullRequestDetailActivity.PULL_REQUEST_SELECTED, pullRequestSelected))
         })
     }
 
@@ -59,6 +60,6 @@ class PullRequestActivity : BaseActivity(), PullRequestContract.View {
 
 
     companion object {
-        private const val REPOSITORY_SELECTED: String = "REPOSITORY_SELECTED"
+        const val REPOSITORY_SELECTED: String = "REPOSITORY_SELECTED"
     }
 }
