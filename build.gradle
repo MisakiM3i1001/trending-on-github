@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:3.1.0'
     }
 }
 
@@ -28,6 +29,7 @@ allprojects {
 ext {
     versions = [
             supportDesignVersion     : "27.1.0",
+            constraintLayoutVersion  : "1.1.0-beta6",
             retrofitVersion          : "2.3.0",
             okHttpVersion            : "3.10.0",
             daggerVersion            : "2.15",
@@ -44,6 +46,7 @@ ext {
     libs = [
             appCompat             : "com.android.support:appcompat-v7:${versions.supportDesignVersion}",
             supportDesign         : "com.android.support:design:${versions.supportDesignVersion}",
+            constraintLayout      : "com.android.support.constraint:constraint-layout:${versions.constraintLayoutVersion}",
 
             retrofit              : "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}",
             retrofitConverter     : "com.squareup.retrofit2:converter-moshi:${versions.retrofitVersion}",

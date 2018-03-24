@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "368809166831",
+    "firebase_url": "https://trending-on-github.firebaseio.com",
+    "project_id": "trending-on-github",
+    "storage_bucket": "trending-on-github.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368809166831:android:f71a2491428c1711",
+        "android_client_info": {
+          "package_name": "io.github.theuzfaleiro.trendingongithub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368809166831-uh2abh31o9tcb14eb057ngdobe3qstja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.theuzfaleiro.trendingongithub",
+            "certificate_hash": "07db0982886ef99d90b5b14523bb3b1e5cad4bb1"
+          }
+        },
+        {
+          "client_id": "368809166831-sbq715cgbja2fl2j830gqtj6pga5708r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAL4OP6Yf8_omJkkvLeOtt7Ll3jO0RgMA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368809166831-sbq715cgbja2fl2j830gqtj6pga5708r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
