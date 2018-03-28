@@ -1,11 +1,13 @@
 package io.github.theuzfaleiro.trendingongithub.data.model.repository
 
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import io.github.theuzfaleiro.trendingongithub.data.network.response.repository.Repository
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.AdapterConstants
 import io.github.theuzfaleiro.trendingongithub.ui.feature.common.adapter.ViewType
 import kotlinx.android.parcel.Parcelize
 
+@SuppressLint("ParcelCreator")
 @Parcelize
 data class Repository(val name: String,
                       val description: String,
