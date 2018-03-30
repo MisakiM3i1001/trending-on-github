@@ -64,22 +64,24 @@ dependencies {
     implementation libs.okHttpInterceptor
     implementation libs.dagger
     implementation libs.daggerSupport
-    releaseImplementation 'com.google.firebase:firebase-crash:12.0.0'
     kapt libs.daggerCompiler
     kapt libs.daggerAndroidProcessor
     implementation libs.rxjava
     implementation libs.rxAndroid
     implementation libs.glide
     kapt libs.glideCompiler
+
+
     testImplementation 'junit:junit:4.12'
-    testImplementation libs.mockitoKotlin
-    testImplementation libs.mockWebServer
-    androidTestImplementation libs.restMock
-    androidTestImplementation libs.androidTestRunner
-    androidTestImplementation libs.androidTestRules
-    androidTestImplementation libs.espressoCore
-    androidTestImplementation libs.espressoContrib
-    androidTestImplementation libs.espressoIntents
+    testImplementation testLibs.mockitoKotlin
+    testImplementation testLibs.mockWebServer
+    androidTestImplementation testLibs.restMock
+    androidTestImplementation testLibs.androidTestRunner
+    androidTestImplementation testLibs.androidTestRules
+    androidTestImplementation testLibs.espressoCore
+    androidTestImplementation testLibs.espressoContrib
+    androidTestImplementation testLibs.espressoIntents
+    releaseImplementation 'com.google.firebase:firebase-crash:12.0.0'
 }
 
 repositories {
