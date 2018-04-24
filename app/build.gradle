@@ -22,7 +22,7 @@ android {
     defaultConfig {
         applicationId 'io.github.theuzfaleiro.trendingongithub'
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName '1.0'
         testInstrumentationRunner 'io.github.theuzfaleiro.trendingongithub.runner.TrendingOnGitHubRunner'
@@ -55,7 +55,6 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation libs.appCompat
     implementation libs.supportDesign
     implementation libs.constraintLayout
     implementation libs.retrofit
@@ -64,7 +63,7 @@ dependencies {
     implementation libs.okHttpInterceptor
     implementation libs.dagger
     implementation libs.daggerSupport
-    releaseImplementation 'com.google.firebase:firebase-crash:12.0.0'
+    releaseImplementation 'com.google.firebase:firebase-crash:15.0.0'
     kapt libs.daggerCompiler
     kapt libs.daggerAndroidProcessor
     implementation libs.rxjava

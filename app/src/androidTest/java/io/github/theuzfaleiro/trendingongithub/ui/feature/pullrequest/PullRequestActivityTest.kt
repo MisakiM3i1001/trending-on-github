@@ -10,7 +10,8 @@ import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.intent.Intents
 import android.support.test.espresso.intent.matcher.IntentMatchers
 import android.support.test.espresso.intent.rule.IntentsTestRule
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.v7.widget.RecyclerView
 import io.appflate.restmock.RESTMockServer
 import io.appflate.restmock.utils.RequestMatchers.pathContains
@@ -44,9 +45,9 @@ class PullRequestActivityTest {
         onView(withId(R.id.recyclerViewPullRequest)).perform(RecyclerViewActions.scrollToPosition
         <RecyclerView.ViewHolder>(2))
 
-        onView(withText("Minimal Weather GPS Location Fix")).check(matches(isDisplayed()))
-        onView(withText("This should fix #1023 ")).check(matches(isDisplayed()))
-        onView(withText("theuzfaleiro")).check(matches(isDisplayed()))
+        PullRequestRobot().isTextDisplayed("Minimal Weather GPS Location Fix")
+                .isTextDisplayed("This should fix #1023 ")
+                .isTextDisplayed("theuzfaleiro")
 
     }
 
@@ -54,7 +55,7 @@ class PullRequestActivityTest {
     fun shouldDisplayErrorMessage_WhenFailingFetchingDataFromAPI() {
         RESTMockServer.whenGET(pathContains("repos/")).thenReturnEmpty(404)
 
-        pullRequestActivityTestRule.launchActivity(Intent())
+        PullRequestRobot().launchActivityWithoutParameters(pullRequestActivityTestRule)
 
         onView(withId(R.id.imageViewRepositoryLoadingError)).check(matches(isDisplayed()))
     }
