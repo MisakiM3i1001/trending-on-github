@@ -63,19 +63,21 @@ ext {
             rxAndroid             : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroidVersion}",
 
             glide                 : "com.github.bumptech.glide:glide:${versions.glideVersion}",
-            glideCompiler         : "com.github.bumptech.glide:compiler:${versions.glideVersion}",
+            glideCompiler         : "com.github.bumptech.glide:compiler:${versions.glideVersion}"]
 
-            mockWebServer         : "com.squareup.okhttp3:mockwebserver:${versions.mockWebServerVersion}",
-            restMock              : "com.github.andrzejchm.RESTMock:android:${versions.restMockVersion}",
 
-            mockitoKotlin         : "com.nhaarman:mockito-kotlin:${versions.mockitoKotlinVersion}",
+    testLibs = [
+            mockWebServer    : "com.squareup.okhttp3:mockwebserver:${versions.mockWebServerVersion}",
+            restMock         : "com.github.andrzejchm.RESTMock:android:${versions.restMockVersion}",
 
-            androidTestRunner     : "com.android.support.test:runner:${versions.androidSupportTestVersion}",
-            androidTestRules      : "com.android.support.test:rules:${versions.androidSupportTestVersion}",
+            mockitoKotlin    : "com.nhaarman:mockito-kotlin:${versions.mockitoKotlinVersion}",
 
-            espressoCore          : "com.android.support.test.espresso:espresso-core:${versions.espressoVersion}",
-            espressoContrib       : "com.android.support.test.espresso:espresso-contrib:${versions.espressoVersion}",
-            espressoIntents       : "com.android.support.test.espresso:espresso-intents:${versions.espressoVersion}"]
+            androidTestRunner: "com.android.support.test:runner:${versions.androidSupportTestVersion}",
+            androidTestRules : "com.android.support.test:rules:${versions.androidSupportTestVersion}",
+
+            espressoCore     : "com.android.support.test.espresso:espresso-core:${versions.espressoVersion}",
+            espressoContrib  : "com.android.support.test.espresso:espresso-contrib:${versions.espressoVersion}",
+            espressoIntents  : "com.android.support.test.espresso:espresso-intents:${versions.espressoVersion}"]
 }
 
 task clean(type: Delete) {
