@@ -14,8 +14,6 @@ class PullRequestRobot : ScreenRobot<PullRequestRobot>() {
     }
 
     fun isTextDisplayed(textToBeMatched: String): PullRequestRobot {
-        checkIfTextDisplayed(textToBeMatched)
-
-        return this
+        return checkIfTextDisplayed(textToBeMatched)
     }
 }
